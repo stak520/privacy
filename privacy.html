@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>用戶協議和隱私政策</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="applicable-device" content="mobile" />
+    <script type="text/javascript" src="./static/js/libs/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="./static/js/libs/jquery.i18n.properties-1.0.9.js?v=1609307678"></script>
+
+    <meta property="og:url"           content="https://hzsdk-e58c6.firebaseapp.com/1004.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="神獸召喚師" />
+    <meta property="og:description"   content="神獸召喚師" />
+    <meta property="og:image"         content="https://hzsdk-e58c6.firebaseapp.com/1025.png" />
+    <meta property="og:image:width"   content="200" />
+    <meta property="og:image:height"  content="200" />
+    <meta property="fb:app_id"        content="2590419377713117" />
+
+
+    <style>
+        html,
+        body,
+        iframe {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        html,
+        body {
+            background: transparent;
+        }
+
+        a {
+            display: inline-block;
+            vertical-align: middle;
+            height: 30px;
+            line-height: 30px;
+            width: 45%;
+            border: 1px solid #3f7aff;
+            font-size: 12px;
+            text-decoration: none;
+            color: #3f7aff;
+        }
+
+        .header {
+            height: 50px;
+            line-height: 50px;
+            font-size: 0;
+            text-align: center;
+        }
+
+        .header a {
+            font-weight: bold;
+            transition: all 0.5s;
+        }
+
+        .header a:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .header a:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+
+        .header.atv-1 a:first-child,
+        .header.atv-2 a:last-child {
+            color: #fff;
+            border-color: #3f7aff;
+            background: #3f7aff;
+        }
+
+        .header.atv-1 a:last-child {
+            border-left-color: transparent;
+        }
+
+        .header.atv-2 a:first-child {
+            border-right-color: transparent;
+        }
+
+        iframe {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            border: 0;
+        }
+
+        /* 黑色样式 */
+        .dark,
+        .dark body {
+            background: #2d2d36;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hd" class="header">
+        <!-- 隐私政策和用户协议的链接填这里 -->
+        <a id="xieyi" data-lang="title_xieyi">用戶協議</a>
+        <a id="yinsi" data-lang="title_yinsi">隱私政策</a>
+    </div>
+
+    <iframe name="ifr" id="ifr"></iframe>
+    <script>
+        var lang = "zh_CN";
+        if (getQueryVariable("lang")) {
+            lang = getQueryVariable("lang");
+        }
+        $('#xieyi').attr('href','./xieyi_' + lang + '.html');
+        $('#yinsi').attr('href','./yinsi_' + lang + '.html');
+
+        var ifr = document.getElementById("ifr");
+        var hd = document.getElementById("hd");
+        var aEls = hd.getElementsByTagName("a");
+        var initHrefIndex = getHrefIndex();
+        ifr.style.height = window.innerHeight - 50 + "px";
+        ifr.src = aEls[initHrefIndex].href;
+        ifr.addEventListener("load", function () {
+            ifr.style.opacity = 1;
+        });
+        hd.className = "header atv-" + (initHrefIndex + 1);
+        setTheme();
+
+        document.body.addEventListener("click", function (e) {
+            if (!e.target.href) {
+                return;
+            }
+            e.preventDefault();
+            if (e.target.href === ifr.src) {
+                return;
+            }
+            ifr.style.opacity = 0;
+            ifr.src = e.target.href;
+            hd.className =
+                hd.className[hd.className.length - 1] === "1" ?
+                "header atv-2" :
+                "header atv-1";
+            if (window.history) {
+                var href = location.href;
+                var a = document.createElement("a");
+                var type = {
+                    "header atv-1": 0,
+                    "header atv-2": 1
+                } [hd.className] || 0;
+                a.href = href;
+                if (!a.search) {
+                    a.search = "?fw_doc_type=" + type;
+                    history.replaceState(null, null, a.href);
+                    return;
+                }
+
+                if (!(/[?&]fw_doc_type=/.test(a.search))) {
+                    a.search += "&fw_doc_type=" + type;
+                    history.replaceState(null, null, a.href);
+                    return;
+                }
+                a.search = a.search.replace(
+                    /([?&])fw_doc_type=[^&]+/,
+                    "$1fw_doc_type=" + type
+                );
+                history.replaceState(null, null, a.href);
+            }
+        });
+
+        function getHrefIndex() {
+            var index = 0;
+            if (!location.search) {
+                return index;
+            }
+            var matchData = location.search.match(
+                /[?&]fw_doc_type=([^&]+)/
+            );
+            if (!matchData || !matchData[1]) {
+                return index;
+            }
+            return ({
+                0: 0,
+                1: 1,
+                yinsi: 1,
+                xieyi: 0,
+                private_policy: 1,
+                user_agreement: 0
+            } [matchData[1]] || index);
+        }
+
+        function setTheme() {
+            if (!location.search) {
+                return;
+            }
+            var matchData = location.search.match(/[?&]theme=([^&]+)/);
+            if (!matchData || !matchData[1]) {
+                return;
+            }
+            var theme = {
+                light: "light",
+                dark: "dark"
+            } [matchData[1]] || "light";
+
+            if (theme === "dark") {
+                document.documentElement.className = "dark";
+                ifr.addEventListener("load", function () {
+                    if (!ifr.contentWindow) {
+                        return;
+                    }
+                    var win = ifr.contentWindow;
+                    var doc = win.document;
+                    var style = [
+                        "html,body{background:#32333f!important}",
+                        "h1,h2,.main p{color:#e7e7e7!important}"
+                    ];
+                    var styleEl = doc.createElement("style");
+                    styleEl.innerText = style.join("");
+                    doc.head.appendChild(styleEl);
+                });
+            }
+        }
+
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+
+    </script>
+</body>
+
+</html>
