@@ -1,0 +1,270 @@
+@import "reset.css";
+@charset "utf-8";
+body,
+html {
+  background: #f7f7f7;
+}
+.p15 {
+  padding: 0.15rem;
+}
+.p20 {
+  padding: 0.2rem;
+}
+.p25 {
+  padding: 0.25rem;
+}
+.p30 {
+  padding: 0.3rem;
+}
+.m15 {
+  margin: 0.15rem;
+}
+.m20 {
+  margin: 0.2rem;
+}
+.m25 {
+  margin: 0.25rem;
+}
+.m30 {
+  margin: 0.3rem;
+}
+.pt15 {
+  padding: 0.15rem 0;
+}
+.pt20 {
+  padding: 0.2rem 0;
+}
+.pt25 {
+  padding: 0.25rem 0;
+}
+.pt30 {
+  padding: 0.3rem 0;
+}
+.mt15 {
+  margin: 0.15rem 0;
+}
+.mt20 {
+  margin: 0.2rem 0;
+}
+.mt25 {
+  margin: 0.25rem 0;
+}
+.mt30 {
+  margin: 0.3rem 0;
+}
+.pl15 {
+  padding: 0 0.15rem;
+}
+.pl20 {
+  padding: 0 0.2rem;
+}
+.pl25 {
+  padding: 0 0.25rem;
+}
+.pl30 {
+  padding: 0 0.3rem;
+}
+.ml15 {
+  margin: 0 0.15rem;
+}
+.ml20 {
+  margin: 0 0.2rem;
+}
+.ml25 {
+  margin: 0 0.25rem;
+}
+.ml30 {
+  margin: 0 0.3rem;
+}
+.main {
+  font-size: 0.24rem;
+  color: #858585;
+}
+.flex {
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex1 {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.flex2 {
+  -moz-box-flex: 2;
+  -webkit-box-flex: 2;
+  box-flex: 2;
+  flex: 2;
+}
+.flex3 {
+  -moz-box-flex: 3;
+  -webkit-box-flex: 3;
+  box-flex: 3;
+  flex: 3;
+}
+.fs22 {
+  font-size: 11px;
+}
+.fs24 {
+  font-size: 12px;
+}
+.fs26 {
+  font-size: 13px;
+}
+.fs28 {
+  font-size: 14px;
+}
+.fs30 {
+  font-size: 15px;
+}
+.fs32 {
+  font-size: 16px;
+}
+.fs34 {
+  font-size: 17px;
+}
+.userInfo {
+  position: relative;
+}
+.userInfo:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: #d6d6d7;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: scaleY(0.5);
+  -ms-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+.userInfo img {
+  width: 0.83rem;
+  height: 0.83rem;
+  border-radius: 100%;
+  margin-right: 0.2rem;
+}
+.userInfo p {
+  line-height: 0.9rem;
+}
+.actInfo .tit {
+  line-height: 0.6rem;
+}
+.actCont p {
+  line-height: 0.4rem;
+}
+.actCont img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+.panel {
+  background: #fff;
+}
+.panel.panel-default {
+  border-bottom: 1px solid #d9d9d9;
+}
+.panel.panel-default .panel-body {
+  padding: 0 0.3rem;
+}
+.right {
+  display: inline-block;
+  float: right;
+}
+.icon-gk-normal {
+  background: url(../img/act-watch.png) no-repeat;
+  background-size: 0.29rem 0.22rem;
+  display: inline-block;
+  width: 0.32rem;
+  height: 0.22rem;
+  vertical-align: middle;
+}
+.blackC {
+  color: black;
+}
+.darkC {
+  color: #b2b2b2;
+}
+.common-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.92rem;
+  z-index: 10;
+  background: #fdfaf2;
+}
+.common-footer .nav,
+.common-footer nav {
+  height: 100%;
+  border-top: 1px solid #d9d9d9;
+  display: -moz-box !important;
+  display: -webkit-box !important;
+  display: box!important;
+  display: -moz-flex !important;
+  display: -ms-flexbox !important;
+  display: flex!important;
+}
+.common-footer.footer-btn nav {
+  padding: 0.09rem 0.3rem 0;
+}
+.common-footer a.center {
+  -webkit-box-flex: 3;
+  box-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  padding: 0.14rem 0.14rem 0;
+}
+.common-footer .center .btn {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+}
+.common-footer .center .btn {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+}
+.common-footer a {
+  display: block;
+  color: #4a4a4a;
+  padding-top: 0.07rem;
+  text-align: center;
+}
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  font-size: 13px;
+  line-height: 0.6rem;
+  border-radius: 5px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #fe9128;
+  border-color: #fe9128;
+}
+.icon-pl_w-normal {
+  background: url(../img/pinglun-w.png) no-repeat;
+  background-size: 0.26rem 0.26rem;
+  display: inline-block;
+  width: 0.26rem;
+  height: 0.26rem;
+  vertical-align: middle;
+}
+.common-footer .center .icon {
+  margin-right: 0.1rem;
+}
+.common-footer-mgb {
+  padding-bottom: 1.07rem;
+}
